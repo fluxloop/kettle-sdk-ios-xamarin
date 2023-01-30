@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 
 using Kettle.iOS;
+using ObjCRuntime;
 
 namespace XamarinFormsSample.iOS
 {

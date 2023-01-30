@@ -1,5 +1,5 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Target Name="BeforeCompile">
+    <Target Name="KettleBeforeCompile">
         <ItemGroup>
             <BindingResources Include="$(MSBuildThisFileDirectory)../content/Kettle.iOS.resources/**/*.*" />
         </ItemGroup>

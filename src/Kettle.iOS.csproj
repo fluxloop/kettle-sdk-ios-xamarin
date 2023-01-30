@@ -55,7 +55,7 @@
     </NativeReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Kettle.XamarinBinding.targets">
+    <None Include="Kettle.iOS.XamarinBinding.targets">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
