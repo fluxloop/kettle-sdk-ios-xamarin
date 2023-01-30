@@ -1,0 +1,10 @@
+source 'git@github.com:fluxloop/PinchSpecs.git'
+platform :ios, '11.0'
+
+install! 'cocoapods', :integrate_targets => false
+
+target 'ObjectiveSharpieIntegration' do
+  use_frameworks!
+end
+
+pod 'KettleKit', '0.0.18'

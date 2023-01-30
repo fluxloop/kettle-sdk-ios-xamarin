@@ -1,0 +1,16 @@
+PODS:
+  - KettleKit (0.0.18)
+
+DEPENDENCIES:
+  - KettleKit (= 0.0.18)
+
+SPEC REPOS:
+  "git@github.com:fluxloop/PinchSpecs.git":
+    - KettleKit
+
+SPEC CHECKSUMS:
+  KettleKit: 78c1724a6c4e2f74fc7928c3d6cf3115949b7291
+
+PODFILE CHECKSUM: e2ff917382c580527e965f6fa4e103381c8a3785
+
+COCOAPODS: 1.11.3

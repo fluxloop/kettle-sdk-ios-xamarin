@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Kettle.iOS.XamarinBinding</id>
+    <version>0.0.18</version>
+    <authors>Kogenta Ltd.</authors>
+    <projectUrl>https://kogenta.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <title>Kettle iOS SDK</title>
+    <summary>Kettle iOS SDK binding for Xamarin iOS</summary>
+    <description>Kettle iOS SDK</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2023</copyright>
+    <tags>kogenta kettlesdk kettle xamarin</tags>
+    <dependencies>
+      <group targetFramework="Xamarin.iOS1.0">
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="bin/Release/Kettle.iOS.dll" target="lib/Xamarin.iOS10/Kettle.iOS.dll" />
+      <file src="bin/Release/Kettle.iOS.resources/**" target="content/Kettle.iOS.resources" />
+      <file src="Kettle.XamarinBinding.targets" target="build/Kettle.XamarinBinding.targets" />
+  </files>
+</package> 
