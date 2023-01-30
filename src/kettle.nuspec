@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Kettle.iOS.XamarinBinding</id>
-    <version>0.0.18</version>
+    <version>0.0.19</version>
     <authors>Kogenta Ltd.</authors>
     <projectUrl>https://kogenta.com</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
