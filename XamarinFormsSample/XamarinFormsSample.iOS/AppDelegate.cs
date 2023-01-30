@@ -30,7 +30,9 @@ namespace XamarinFormsSample.iOS
             config.ProductionLogLevel = KTLLogLevel.Trace;
             config.DevelopmentLogLevel = KTLLogLevel.Trace;
 
+            KTLXamarin.Register();
             KTLKettle.Prepare(config, options);
+            
 
             if (KTLKettle.IsReady)
             {
@@ -50,6 +52,23 @@ namespace XamarinFormsSample.iOS
             ).ToArray();
 
             KTLKettle.Shared.Grant(consents);
+
+            if (!KTLKettle.Shared.IsEnabledWithModule(KTLModule.Location))
+            {
+                var locationModule = NSNumber.FromUnsignedLong((System.nuint)(long)KTLModule.Location);
+                KTLKettle.Shared.Start(new[] { locationModule });
+            }
+
+            if (!KTLKettle.Shared.IsEnabledWithModule(KTLModule.Bluetooth))
+            {
+                Console.WriteLine("Bluetooth is not enabled");
+                var bluetoothModule = NSNumber.FromUnsignedLong((System.nuint)(long)KTLModule.Bluetooth);
+                KTLKettle.Shared.Start(new[] { bluetoothModule });
+            } else
+            {
+                Console.WriteLine("Bluetooth is enabled");
+            }
+
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

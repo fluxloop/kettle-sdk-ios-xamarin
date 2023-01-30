@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace XamarinFormsSample
@@ -13,6 +14,9 @@ namespace XamarinFormsSample
         public MainPage()
         {
             InitializeComponent();
+
+            Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            Permissions.RequestAsync<Permissions.LocationAlways>();
         }
     }
 }
