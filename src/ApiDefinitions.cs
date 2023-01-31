@@ -80,6 +80,34 @@ namespace Kettle.iOS
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
 		[Export ("identifier")]
 		string Identifier { get; }
+
+		// -(void)requestBluetoothPermission;
+		[Export ("requestBluetoothPermission")]
+		void RequestBluetoothPermission ();
+
+		// @property (readonly, nonatomic) BOOL started;
+		[Export ("started")]
+		bool Started { get; }
+
+		// -(NSArray<NSNumber *> * _Nonnull)objc_grantedConsents __attribute__((warn_unused_result("")));
+		[Export ("objc_grantedConsents")]
+		NSNumber[] Objc_grantedConsents { get; }
+
+		// @property (copy, nonatomic) NSString * _Nullable pushToken;
+		[NullAllowed, Export ("pushToken")]
+		string PushToken { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable externalId;
+		[NullAllowed, Export ("externalId")]
+		string ExternalId { get; set; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull privacyTermsUrl;
+		[Export ("privacyTermsUrl")]
+		string PrivacyTermsUrl { get; }
+
+		// -(void)deleteCollectedDataOnSuccess:(void (^ _Nullable)(BOOL))onSuccess;
+		[Export ("deleteCollectedDataOnSuccess:")]
+		void DeleteCollectedDataOnSuccess ([NullAllowed] Action<bool> onSuccess);
 	}
 
     // @interface KTLConfig : NSObject <NSCopying>

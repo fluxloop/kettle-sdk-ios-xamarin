@@ -19,7 +19,7 @@
   </metadata>
   <files>
       <file src="bin/Release/Kettle.iOS.dll" target="lib/Xamarin.iOS10/Kettle.iOS.dll" />
-      <file src="bin/Release/Kettle.iOS.resources/**" target="content/Kettle.iOS.resources" />
-      <file src="Kettle.iOS.XamarinBinding.targets" target="build/Kettle.iOS.XamarinBinding.targets" />
+	      <!--      <file src="bin/Release/Kettle.iOS.resources/**" target="content/Kettle.iOS.resources" />-->
+	      <!--      <file src="Kettle.iOS.XamarinBinding.targets" target="build/Kettle.iOS.XamarinBinding.targets" />-->
   </files>
 </package> 
