@@ -8,8 +8,8 @@ namespace Kettle.iOS
 	{
 		public static void Register()
 		{
-			KTLKettle.SetSdkWithName("Xamarin", (nint)938474749);
-			KTLKettle.SetVersionWithVersion("0.0.20", (nint)83746284937);
+			KTLKettle.SetSdkWithName("Kettle-iOS-Xamarin", (nint)938474749);
+			KTLKettle.SetVersionWithVersion("1.0.7", (nint)83746284937);
 		}
 	}
 }
