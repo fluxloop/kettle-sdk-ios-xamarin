@@ -28,6 +28,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
+    <CodesignProvision>VS: com.kogenta.kettle.xamarin Development</CodesignProvision>
+    <CodesignKey>Apple Development: Kissor Jeyabalan (V8483ZXSVN)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -38,6 +40,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
+    <CodesignProvision>VS: com.kogenta.kettle.xamarin Development</CodesignProvision>
+    <CodesignKey>Apple Development: Kissor Jeyabalan (V8483ZXSVN)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,12 +52,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Development: Kissor Jeyabalan (V8483ZXSVN)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
-    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignProvision>VS: com.kogenta.kettle.xamarin Development</CodesignProvision>
     <MtouchExtraArgs>-v --registrar:static</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -63,10 +67,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Development: Kissor Jeyabalan (V8483ZXSVN)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
     <MtouchLink>SdkOnly</MtouchLink>
+    <CodesignProvision>VS: com.kogenta.kettle.xamarin Development</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -131,15 +136,21 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-    <PackageReference Include="Kettle.iOS.XamarinBinding">
-      <Version>1.0.7</Version>
+    <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging">
+      <Version>8.10.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Kettle.iOS.csproj">
+      <Name>Kettle.iOS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamarinFormsSample\XamarinFormsSample.csproj">
       <Project>{64AA8B25-368F-4933-814E-DEEAF47CA152}</Project>
       <Name>XamarinFormsSample</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\GoogleService-Info.plist" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

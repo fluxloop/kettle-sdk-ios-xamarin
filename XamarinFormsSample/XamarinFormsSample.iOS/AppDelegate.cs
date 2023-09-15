@@ -6,7 +6,10 @@ using Foundation;
 using UIKit;
 
 using Kettle.iOS;
+using Firebase.Core;
 using ObjCRuntime;
+using UserNotifications;
+using Firebase.CloudMessaging;
 
 namespace XamarinFormsSample.iOS
 {
@@ -14,7 +17,7 @@ namespace XamarinFormsSample.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IUNUserNotificationCenterDelegate, IMessagingDelegate
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -25,6 +28,28 @@ namespace XamarinFormsSample.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            // Initialize Firebase
+            Firebase.Core.App.Configure();
+
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10,0))
+            {
+                UNUserNotificationCenter.Current.Delegate = this;
+
+                var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
+                UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) => {
+                    Console.WriteLine(granted);
+                });
+
+            } else {
+                var allNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound;
+                var settings = UIUserNotificationSettings.GetSettingsForTypes(allNotificationTypes, null);
+                UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+            }
+
+            Messaging.SharedInstance.Delegate = this;
+            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+
+            // Initialize Kettle
             KTLConfig config = KTLConfig.KTLDefaultConfig();
             config.ProductionApiKey = "6bbaa095cd614680a089840eee426dc1";
             config.DevelopmentApiKey = "ecba028a8f2b4e91a99aa33151c1cdd2";
@@ -75,6 +100,21 @@ namespace XamarinFormsSample.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        [Export ("messaging:didReceiveRegistrationToken:")]
+        public async void DidReceiveRegistrationToken(Messaging messaging, string fcmToken)
+        {
+            Console.WriteLine($"Firebase registration token: {fcmToken}");
+
+            try
+            {
+                await Messaging.SharedInstance.SubscribeAsync("kettle");
+                Console.WriteLine("Subscribed to topic 'kettle'");
+            } catch (NSErrorException ex)
+            {
+                Console.WriteLine("Failed to subscribe to 'kettle'", ex);
+            }
         }
     }
 }
