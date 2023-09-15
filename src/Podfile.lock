@@ -1,16 +1,16 @@
 PODS:
-  - KettleKit (1.0.0)
+  - KettleKit (1.0.13)
 
 DEPENDENCIES:
-  - KettleKit (= 1.0.0)
+  - KettleKit (= 1.0.13)
 
 SPEC REPOS:
   trunk:
     - KettleKit
 
 SPEC CHECKSUMS:
-  KettleKit: a9f3b2b9ada3c4450ea2a1b595e70265d8d07d15
+  KettleKit: 7be8bd0ef31d4498f1f594e567da1caa077fd1dc
 
-PODFILE CHECKSUM: 1e774d3ae19a13cd580156be88f61ae830eea49b
+PODFILE CHECKSUM: dc35f3848ea3a3b4230765202f003e23af9e9532
 
 COCOAPODS: 1.11.3

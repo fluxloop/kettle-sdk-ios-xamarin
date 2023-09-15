@@ -7,4 +7,4 @@ target 'ObjectiveSharpieIntegration' do
   use_frameworks!
 end
 
-pod 'KettleKit', '1.0.7'
+pod 'KettleKit', '1.0.13'
