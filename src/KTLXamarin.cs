@@ -21,11 +21,10 @@ namespace Kettle.iOS
 			const string kettleOnboarded = "kettle-onboarded";
 			
 			var kettleId = KTLKettle.Shared.Identifier;
-			var firstNumber = Regex.Match(kettleId, "\\d").ToString().ToLower();
-			var firstLetter = Regex.Match(kettleId, "[a-zA-Z]").ToString().ToLower();
+			var firstTwoChars = kettleId.Substring(0, 2);
 
 			closure.Invoke(allKettle);
-			closure.Invoke($"kettle-{firstNumber}-{firstLetter}");
+			closure.Invoke($"kettle-{firstTwoChars}");
 
 			if (KTLKettle.Shared.Started)
 			{
