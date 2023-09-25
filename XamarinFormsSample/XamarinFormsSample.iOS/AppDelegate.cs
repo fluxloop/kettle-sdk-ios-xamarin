@@ -106,15 +106,18 @@ namespace XamarinFormsSample.iOS
         public async void DidReceiveRegistrationToken(Messaging messaging, string fcmToken)
         {
             Console.WriteLine($"Firebase registration token: {fcmToken}");
-
-            try
+            
+            KTLXamarin.RegisterTopic(async topic =>
             {
-                await Messaging.SharedInstance.SubscribeAsync("kettle");
-                Console.WriteLine("Subscribed to topic 'kettle'");
-            } catch (NSErrorException ex)
-            {
-                Console.WriteLine("Failed to subscribe to 'kettle'", ex);
-            }
+                try
+                {
+                    await Messaging.SharedInstance.SubscribeAsync(topic);
+                }
+                catch (NSErrorException ex)
+                {
+                    Console.WriteLine($"Failed to subscribe to Kettle topics: {ex.Message}");
+                }
+            });
         }
     }
 }
