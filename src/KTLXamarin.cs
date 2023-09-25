@@ -8,30 +8,26 @@ using Kettle.iOS;
 namespace Kettle.iOS
 {
 	public static class KTLXamarin
-	{
-		[Obsolete]
-		public static void Register()
-		{
-			// Obsolete
-			//KTLKettle.SetSdkWithName("Kettle-iOS-Xamarin", (nint)938474749);
-			//KTLKettle.SetVersionWithVersion("1.0.7", (nint)83746284937);			
-		}
-
+	{		
 		public static void RegisterTopic(Action<string> closure)
 		{
 			const string allKettle = "kettle";
 			const string kettleOnboarded = "kettle-onboarded";
 			
 			var kettleId = KTLKettle.Shared.Identifier;
-			var firstTwoChars = kettleId.Substring(0, 2);
+			var firstTwoChars = kettleId.ToLower().Substring(0, 2);
 
 			closure.Invoke(allKettle);
-			closure.Invoke($"kettle-{firstTwoChars}");
+            Console.WriteLine($"Registering to topic kettle");
 
-			if (KTLKettle.Shared.Started)
+            closure.Invoke($"kettle-{firstTwoChars}");
+            Console.WriteLine($"Registering to topic kettle-{firstTwoChars}");
+
+            if (KTLKettle.Shared.Started)
 			{
 				closure.Invoke(kettleOnboarded);
-			}
+                Console.WriteLine($"Registering to topic kettle-onboarded");
+            }
 		}
 	}
 }
